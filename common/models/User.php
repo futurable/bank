@@ -15,7 +15,6 @@ use yii\web\IdentityInterface;
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
- * @property string $auth_key
  * @property integer $role
  * @property integer $status
  * @property integer $created_at
@@ -26,14 +25,18 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+
     const ROLE_USER = 10;
+    const ROLE_INSTRUCTOR = 20;
+    const ROLE_MANAGER = 30;
+    const ROLE_ADMIN = 40;
 
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%user}}';
+        return 'bank_user';
     }
 
     /**
@@ -54,9 +57,39 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-
+        
             ['role', 'default', 'value' => self::ROLE_USER],
             ['role', 'in', 'range' => [self::ROLE_USER]],
+        
+            [['role', 'status'], 'integer'],
+            [['username'], 'string', 'max' => 32],
+            [['password'], 'string', 'max' => 512],
+            [['email'], 'string', 'max' => 255],
+        
+            ['username', 'filter', 'filter' => 'trim'],
+            ['username', 'required'],
+            ['username', 'unique'],
+            ['username', 'string', 'min' => 2, 'max' => 255],
+        
+            ['email', 'filter', 'filter' => 'trim'],
+            ['email', 'required'],
+            ['email', 'email'],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+        'id' => Yii::t('Backend', 'ID'),
+        'username' => Yii::t('Backend', 'Username'),
+        'password' => Yii::t('Backend', 'Password'),
+        'email' => Yii::t('Backend', 'Email'),
+        'role' => Yii::t('Backend', 'Role'),
+        'status' => Yii::t('Backend', 'Status'),
+        'token_customer_id' => Yii::t('Backend', 'Token Customer ID'),
         ];
     }
 
@@ -121,15 +154,7 @@ class User extends ActiveRecord implements IdentityInterface
         $timestamp = (int) end($parts);
         return $timestamp + $expire >= time();
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function getId()
-    {
-        return $this->getPrimaryKey();
-    }
-
+    
     /**
      * @inheritdoc
      */
@@ -137,7 +162,15 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->auth_key;
     }
-
+    
+    /**
+     * @inheritdoc
+     */
+    public function getId()
+    {
+        return $this->getPrimaryKey();
+    }
+    
     /**
      * @inheritdoc
      */
@@ -145,7 +178,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->getAuthKey() === $authKey;
     }
-
+    
     /**
      * Validates password
      *
@@ -168,14 +201,6 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Generates "remember me" authentication key
-     */
-    public function generateAuthKey()
-    {
-        $this->auth_key = Yii::$app->security->generateRandomString();
-    }
-
-    /**
      * Generates new password reset token
      */
     public function generatePasswordResetToken()
@@ -189,5 +214,18 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+    
+    public function getIsUser(){
+        return ($this->role >= 10) ? true : false;
+    }
+    public function getIsInstructor(){
+        return ($this->role >= 20) ? true : false;
+    }
+    public function getIsManager(){
+        return ($this->role >= 30) ? true : false;
+    }
+    public function getIsAdmin(){
+        return ($this->role >= 40) ? true : false;
     }
 }
