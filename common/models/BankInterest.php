@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
 /**
- * This is the model class for table "bank_interest".
+ * This is the model class for table "{{%bank_interest}}".
  *
  * @property integer $id
  * @property string $rate
@@ -21,7 +21,7 @@ class BankInterest extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'bank_interest';
+        return '{{%bank_interest}}';
     }
 
     /**
@@ -44,12 +44,12 @@ class BankInterest extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'rate' => 'Rate',
-            'name' => 'Name',
-            'create_date' => 'Create Date',
-            'modify_date' => 'Modify Date',
-            'bank_account_type_id' => 'Bank Account Type ID',
+            'id' => Yii::t('app', 'ID'),
+            'rate' => Yii::t('app', 'Rate'),
+            'name' => Yii::t('app', 'Name'),
+            'create_date' => Yii::t('app', 'Create Date'),
+            'modify_date' => Yii::t('app', 'Modify Date'),
+            'bank_account_type_id' => Yii::t('app', 'Bank Account Type ID'),
         ];
     }
 }

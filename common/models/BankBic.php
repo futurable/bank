@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
 /**
- * This is the model class for table "bank_bic".
+ * This is the model class for table "{{%bank_bic}}".
  *
  * @property integer $id
  * @property integer $branch_code
@@ -20,7 +20,7 @@ class BankBic extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'bank_bic';
+        return '{{%bank_bic}}';
     }
 
     /**
@@ -45,11 +45,11 @@ class BankBic extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'branch_code' => 'Branch Code',
-            'bic' => 'Bic',
-            'bank_name' => 'Bank Name',
-            'create_date' => 'Create Date',
+            'id' => Yii::t('app', 'ID'),
+            'branch_code' => Yii::t('app', 'Branch Code'),
+            'bic' => Yii::t('app', 'Bic'),
+            'bank_name' => Yii::t('app', 'Bank Name'),
+            'create_date' => Yii::t('app', 'Create Date'),
         ];
     }
 }

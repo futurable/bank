@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
 /**
- * This is the model class for table "bank_account_transaction".
+ * This is the model class for table "{{%bank_account_transaction}}".
  *
  * @property integer $id
  * @property string $recipient_iban
@@ -31,7 +31,7 @@ class BankAccountTransaction extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'bank_account_transaction';
+        return '{{%bank_account_transaction}}';
     }
 
     /**
@@ -59,22 +59,22 @@ class BankAccountTransaction extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'recipient_iban' => 'Recipient Iban',
-            'recipient_bic' => 'Recipient Bic',
-            'recipient_name' => 'Recipient Name',
-            'payer_iban' => 'Payer Iban',
-            'payer_bic' => 'Payer Bic',
-            'payer_name' => 'Payer Name',
-            'event_date' => 'Event Date',
-            'create_date' => 'Create Date',
-            'modify_date' => 'Modify Date',
-            'amount' => 'Amount',
-            'reference_number' => 'Reference Number',
-            'message' => 'Message',
-            'exchange_rate' => 'Exchange Rate',
-            'currency' => 'Currency',
-            'status' => 'Status',
+            'id' => Yii::t('app', 'ID'),
+            'recipient_iban' => Yii::t('app', 'Recipient Iban'),
+            'recipient_bic' => Yii::t('app', 'Recipient Bic'),
+            'recipient_name' => Yii::t('app', 'Recipient Name'),
+            'payer_iban' => Yii::t('app', 'Payer Iban'),
+            'payer_bic' => Yii::t('app', 'Payer Bic'),
+            'payer_name' => Yii::t('app', 'Payer Name'),
+            'event_date' => Yii::t('app', 'Event Date'),
+            'create_date' => Yii::t('app', 'Create Date'),
+            'modify_date' => Yii::t('app', 'Modify Date'),
+            'amount' => Yii::t('app', 'Amount'),
+            'reference_number' => Yii::t('app', 'Reference Number'),
+            'message' => Yii::t('app', 'Message'),
+            'exchange_rate' => Yii::t('app', 'Exchange Rate'),
+            'currency' => Yii::t('app', 'Currency'),
+            'status' => Yii::t('app', 'Status'),
         ];
     }
 }

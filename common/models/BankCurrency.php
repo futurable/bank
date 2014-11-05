@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
 /**
- * This is the model class for table "bank_currency".
+ * This is the model class for table "{{%bank_currency}}".
  *
  * @property integer $id
  * @property string $code
@@ -18,7 +18,7 @@ class BankCurrency extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'bank_currency';
+        return '{{%bank_currency}}';
     }
 
     /**
@@ -39,9 +39,9 @@ class BankCurrency extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'code' => 'Code',
-            'exchange_rate' => 'Exchange Rate',
+            'id' => Yii::t('app', 'ID'),
+            'code' => Yii::t('app', 'Code'),
+            'exchange_rate' => Yii::t('app', 'Exchange Rate'),
         ];
     }
 }

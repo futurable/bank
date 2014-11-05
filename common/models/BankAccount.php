@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
 /**
- * This is the model class for table "bank_account".
+ * This is the model class for table "{{%bank_account}}".
  *
  * @property integer $id
  * @property string $iban
@@ -26,7 +26,7 @@ class BankAccount extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'bank_account';
+        return '{{%bank_account}}';
     }
 
     /**
@@ -51,17 +51,17 @@ class BankAccount extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'iban' => 'Iban',
-            'name' => 'Name',
-            'status' => 'Status',
-            'create_date' => 'Create Date',
-            'modify_date' => 'Modify Date',
-            'bank_user_id' => 'Bank User ID',
-            'bank_bic_id' => 'Bank Bic ID',
-            'bank_interest_id' => 'Bank Interest ID',
-            'bank_currency_id' => 'Bank Currency ID',
-            'bank_account_type_id' => 'Bank Account Type ID',
+            'id' => Yii::t('app', 'ID'),
+            'iban' => Yii::t('app', 'Iban'),
+            'name' => Yii::t('app', 'Name'),
+            'status' => Yii::t('app', 'Status'),
+            'create_date' => Yii::t('app', 'Create Date'),
+            'modify_date' => Yii::t('app', 'Modify Date'),
+            'bank_user_id' => Yii::t('app', 'Bank User ID'),
+            'bank_bic_id' => Yii::t('app', 'Bank Bic ID'),
+            'bank_interest_id' => Yii::t('app', 'Bank Interest ID'),
+            'bank_currency_id' => Yii::t('app', 'Bank Currency ID'),
+            'bank_account_type_id' => Yii::t('app', 'Bank Account Type ID'),
         ];
     }
 }

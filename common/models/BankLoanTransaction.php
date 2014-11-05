@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
 /**
- * This is the model class for table "bank_loan_transaction".
+ * This is the model class for table "{{%bank_loan_transaction}}".
  *
  * @property integer $id
  * @property integer $sequence_number
@@ -25,7 +25,7 @@ class BankLoanTransaction extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'bank_loan_transaction';
+        return '{{%bank_loan_transaction}}';
     }
 
     /**
@@ -48,16 +48,16 @@ class BankLoanTransaction extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'sequence_number' => 'Sequence Number',
-            'instalment_amount' => 'Instalment Amount',
-            'interest_amount' => 'Interest Amount',
-            'notification_penalty_sent' => 'Notification Penalty Sent',
-            'create_date' => 'Create Date',
-            'due_date' => 'Due Date',
-            'event_date' => 'Event Date',
-            'bank_loan_id' => 'Bank Loan ID',
-            'bank_account_transaction_id' => 'Bank Account Transaction ID',
+            'id' => Yii::t('app', 'ID'),
+            'sequence_number' => Yii::t('app', 'Sequence Number'),
+            'instalment_amount' => Yii::t('app', 'Instalment Amount'),
+            'interest_amount' => Yii::t('app', 'Interest Amount'),
+            'notification_penalty_sent' => Yii::t('app', 'Notification Penalty Sent'),
+            'create_date' => Yii::t('app', 'Create Date'),
+            'due_date' => Yii::t('app', 'Due Date'),
+            'event_date' => Yii::t('app', 'Event Date'),
+            'bank_loan_id' => Yii::t('app', 'Bank Loan ID'),
+            'bank_account_transaction_id' => Yii::t('app', 'Bank Account Transaction ID'),
         ];
     }
 }

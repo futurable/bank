@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
 /**
- * This is the model class for table "bank_account_type".
+ * This is the model class for table "{{%bank_account_type}}".
  *
  * @property integer $id
  * @property string $type
@@ -18,7 +18,7 @@ class BankAccountType extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'bank_account_type';
+        return '{{%bank_account_type}}';
     }
 
     /**
@@ -38,9 +38,9 @@ class BankAccountType extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'type' => 'Type',
-            'description' => 'Description',
+            'id' => Yii::t('app', 'ID'),
+            'type' => Yii::t('app', 'Type'),
+            'description' => Yii::t('app', 'Description'),
         ];
     }
 }
